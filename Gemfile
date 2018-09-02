@@ -35,6 +35,11 @@ gem 'jbuilder', '~> 2.5'
 
 # Use haml instead of erb.
 gem 'haml-rails'
+# Use simple_form
+gem 'simple_form'
+# Use bootstrap
+gem 'bootstrap'
+gem 'jquery-rails'
 
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.1.0', require: false
