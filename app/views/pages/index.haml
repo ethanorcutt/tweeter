@@ -4,19 +4,4 @@
   .row
     = link_to 'New Tweet', new_post_path, class: 'btn btn-primary btn-sm'
 
-  - @tweets.each do |tweet|
-    .row
-      .card.spacer
-        .card-body
-          .card-title
-            = tweet.created_at
-          %p
-            = tweet.message
-          .card-link
-            = tweet.likes
-            |
-            = link_to 'Like', like_tweet_path(tweet)
-            |
-            = link_to 'Edit', edit_post_path(tweet)
-            |
-            = link_to 'Delete', tweet, method: :delete, data: { confirm: 'Are you sure?' }
+  = render 'show_tweets'

@@ -63,9 +63,10 @@ class PostsController < ApplicationController
 
   def like_tweet
     @post = Post.find(params[:id])
-    logger.debug("#{@post.message} | #{@post.likes}")
     @post.increment(:likes, 1)
     @post.save
+
+    logger.debug("#{@post.message} | #{@post.likes}")
 
     redirect_to root_path
   end

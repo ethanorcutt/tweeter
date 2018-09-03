@@ -1,0 +1,17 @@
+- @tweets.each do |tweet|
+  .row
+    .card.spacer
+      .card-body
+        .card-title
+          = tweet.created_at
+        %p
+          = tweet.message
+        .card-link
+          #likes
+            = tweet.likes
+          |
+          = link_to 'Like', like_tweet_path(tweet)
+          |
+          = link_to 'Edit', edit_post_path(tweet)
+          |
+          = link_to 'Delete', tweet, method: :delete, data: { confirm: 'Are you sure?' }
