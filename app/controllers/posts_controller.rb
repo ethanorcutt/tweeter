@@ -61,6 +61,15 @@ class PostsController < ApplicationController
     end
   end
 
+  def like_tweet
+    @post = Post.find(params[:id])
+    logger.debug("#{@post.message} | #{@post.likes}")
+    @post.increment(:likes, 1)
+    @post.save
+
+    redirect_to root_path
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_post
@@ -69,6 +78,6 @@ class PostsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def post_params
-      params.require(:post).permit(:message)
+      params.require(:post).permit(:message, :likes)
     end
 end
