@@ -1,7 +1,10 @@
 Rails.application.routes.draw do
-  resources :posts
-  
-  get '/like_tweet/:id', to: "posts#like_tweet", as: 'like_tweet'
+  devise_for :users
+  resources :posts do
+    member do
+      put 'like' => 'posts#vote'
+    end
+  end
   
   root 'pages#index'
 end

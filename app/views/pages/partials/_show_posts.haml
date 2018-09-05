@@ -1,0 +1,16 @@
+- @posts.each do |post|
+  .row
+    .card.spacer
+      .card-body
+        .card-title
+          = post.created_at
+        %p
+          = post.message
+        .card-link
+          %span.likes-count
+            = post.get_upvotes.size
+          = has_user_liked(post)
+          %br
+          = link_to 'Edit', edit_post_path(post)
+          |
+          = link_to '', post, method: :delete, data: { confirm: 'Are you sure?' }, class: 'i far fa-trash-alt'

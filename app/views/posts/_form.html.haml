@@ -8,5 +8,7 @@
   .row
     = f.input :message
   .row
+    = f.collection_select :user_id, User.all, :id, :first_name
+  .row
     = f.button :submit, class: 'btn btn-primary btn-sm'
-    = link_to 'Back', posts_path, class: 'btn btn-secondary btn-sm'
+    = link_to 'Back', root_path, class: 'btn btn-secondary btn-sm'

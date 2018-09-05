@@ -1,5 +1,6 @@
 class PostsController < ApplicationController
-  before_action :set_post, only: [:show, :edit, :update, :destroy]
+  before_action :set_post, only: [:show, :edit, :update, :destroy, :vote]
+  respond_to :js, :json, :html
 
   # GET /posts
   # GET /posts.json
@@ -61,14 +62,12 @@ class PostsController < ApplicationController
     end
   end
 
-  def like_tweet
-    @post = Post.find(params[:id])
-    @post.increment(:likes, 1)
-    @post.save
-
-    logger.debug("#{@post.message} | #{@post.likes}")
-
-    redirect_to root_path
+  def vote
+    if !current_user.liked? @post
+      @post.liked_by current_user
+    elsif current_user.liked? @post
+      @post.unliked_by current_user
+    end
   end
 
   private
@@ -79,6 +78,6 @@ class PostsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def post_params
-      params.require(:post).permit(:message, :likes)
+      params.require(:post).permit(:message, :user_id)
     end
 end
