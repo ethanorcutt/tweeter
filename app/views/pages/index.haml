@@ -1,9 +1,2 @@
-%h1 Welcome to Tweeter.
-
 .container
-  .row
-    Hello, #{current_user.full_name}
-  .row
-    = link_to 'New Tweet', new_post_path, class: 'btn btn-primary btn-sm'
-
   = render '/pages/partials/show_posts'

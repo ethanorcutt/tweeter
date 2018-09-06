@@ -14,6 +14,19 @@
 
 @import "bootstrap";
 
+body {
+  width: 100%;
+  margin: 0%;
+}
+
+.container-fluid {
+  padding: 0px;
+}
+
 .spacer {
   margin-top: 10px;
+}
+
+#tweet-btn {
+  margin-top: 9px;
 }
