@@ -1,7 +1,1 @@
-- if current_user.liked? @post
-  $('.like-btn').addClass('fas fa-heart');
-- else
-  $('.like-btn').removeClass('fas fa-heart');
-  $('.like-btn').addClass('far fa-heart');
-
 $('.likes-count').html("#{@post.get_upvotes.size}");
