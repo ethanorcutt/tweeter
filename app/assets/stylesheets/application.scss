@@ -19,14 +19,38 @@ body {
   margin: 0%;
 }
 
+.card {
+  width: 25rem;
+}
+
+.section-headers {
+  margin-bottom: 2px;
+}
+
 .container-fluid {
   padding: 0px;
 }
 
-.spacer {
+.top-spacer {
   margin-top: 10px;
+}
+
+.card {
+  margin-bottom: 5px;
 }
 
 #tweet-btn {
   margin-top: 9px;
+}
+
+.tweet-text {
+  font-size: 12px;
+}
+
+.post-btns {
+  float: left;
+}
+
+.post-time {
+  float: right;
 }

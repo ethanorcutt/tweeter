@@ -1,16 +1,21 @@
 - @posts.each do |post|
   .row
-    .card.spacer
+    .card
+      .card-header
+        = post.user.full_name
       .card-body
-        .card-title
-          = post.created_at
         %p
           = post.message
         .card-link
-          %span.likes-count
-            = post.get_upvotes.size
-          = has_user_liked(post)
-          %br
-          = link_to 'Edit', edit_post_path(post)
-          |
-          = link_to '', post, method: :delete, data: { confirm: 'Are you sure?' }, class: 'far fa-trash-alt'
+          .tweet-text
+            .post-btns
+              %span.likes-count
+                = post.get_upvotes.size
+              |
+              = has_user_liked(post)
+              |
+              = link_to '', edit_post_path(post), class: 'far fa-edit'
+              |
+              = link_to '', post, method: :delete, data: { confirm: 'Are you sure?' }, class: 'far fa-trash-alt'
+            .post-time.text-muted
+              = formatted_time(post)
