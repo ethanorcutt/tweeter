@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   devise_for :users
   resources :posts do
     member do
-      put 'like' => 'posts#vote'
+      put 'like/' => 'posts#vote'
     end
   end
   

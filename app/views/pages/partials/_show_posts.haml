@@ -9,7 +9,7 @@
         .card-link
           .tweet-text
             .post-btns
-              %span.likes-count
+              %span.likes-count{:id => "post_#{post.id}"}
                 = post.get_upvotes.size
               |
               = has_user_liked(post)
