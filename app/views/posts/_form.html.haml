@@ -1,22 +1,18 @@
-.top-spacer
 .container
   .col-md-6.ml-auto.mr-auto
     .card
-      .card-header
-        %h3 Construct your Tweet
       .card-body
-        = simple_form_for(@post) do |f|
-          - if @post.errors.any?
-            #error_explanation
-              %h2= "#{pluralize(@post.errors.count, "error")} prohibited this post from being saved:"
-              %ul
-                - @post.errors.full_messages.each do |message|
-                  %li= message
-
-          .row
-            = f.input :message
-          .row
-            = f.collection_select :user_id, User.all, :id, :first_name
-
-          = f.button :submit, class: 'btn btn-primary btn-sm'
-          = link_to 'Back', root_path, class: 'btn btn-secondary btn-sm'
+        .container
+          = simple_form_for(@post) do |f|
+            - if @post.errors.any?
+              #error_explanation
+                %h2= "#{pluralize(@post.errors.count, "error")} prohibited this post from being saved:"
+                %ul
+                  - @post.errors.full_messages.each do |message|
+                    %li= message
+            .row
+              = f.input :message, input_html: { maxlength: 140 }, placeholder: 'Whats happening?', html: { class: 'mytextarea' }
+            .row
+              = f.button :button, class: 'btn btn-primary btn-sm mr-sm-1' do
+                Tweet
+              = link_to 'Back', root_path, class: 'btn btn-secondary btn-sm'

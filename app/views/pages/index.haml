@@ -1,4 +1,6 @@
 .container
-  .row.top-spacer
-    %h6.section-headers Latest Tweets
-  = render '/pages/partials/show_posts'
+  .row
+    .col-sm-4.outliner
+      = greeting_helper
+    .col-sm-8.outliner
+      = render '/pages/partials/show_posts'
