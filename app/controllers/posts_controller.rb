@@ -1,5 +1,6 @@
 class PostsController < ApplicationController
   before_action :set_post, only: [:show, :edit, :update, :destroy, :vote]
+  before_action :authenticate_user!, only: [:new, :edit, :update, :destroy]
   respond_to :js, :json, :html
 
   # GET /posts
@@ -20,6 +21,7 @@ class PostsController < ApplicationController
 
   # GET /posts/1/edit
   def edit
+    redirect_to root_path unless @post.user == current_user
   end
 
   # POST /posts
@@ -56,10 +58,23 @@ class PostsController < ApplicationController
   # DELETE /posts/1
   # DELETE /posts/1.json
   def destroy
-    @post.destroy
-    respond_to do |format|
-      format.html { redirect_to root_path, notice: 'Post was successfully destroyed.' }
-      format.json { head :no_content }
+    if @post.user == current_user
+      if current_user.posts.find(params[:id]).destroy
+        respond_to do |format|
+          format.html { redirect_to root_path, notice: 'Post was successfully destroyed.' }
+          format.json { head :no_content }
+        end
+      else
+        respond_to do |format|
+          format.html { redirect_to root_path, notice: 'There was an error.' }
+          format.json { head :no_content }
+        end
+      end
+    else
+      respond_to do |format|
+        format.html { redirect_to root_path, notice: 'You are not authorized to delete that post.' }
+        format.json { head :no_content }
+      end
     end
   end
 
