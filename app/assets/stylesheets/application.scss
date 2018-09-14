@@ -15,34 +15,30 @@
 @import "/\*";
 @import "bootstrap";
 
-.card {
-  width: 25rem;
-}
-
-.section-headers {
-  margin-bottom: 2px;
-}
-
 .top-spacer {
   margin-top: 10px;
 }
 
-.card {
-  margin-bottom: 5px;
+.padding-0 {
+  padding: 0px;
 }
 
-#tweet-btn {
-  margin-top: 9px;
+.padding-sm {
+  padding: 0 2px 0 2px;
 }
 
-.tweet-text {
-  font-size: 12px;
+.padding-md {
+  padding: 0 5px 0 5px;
 }
 
-.post-btns {
-  float: left;
+.outliner {
+  border:1px solid #cecece;
 }
 
-.post-time {
-  float: right;
+.notice {
+  background-color: #83F25E;
+}
+
+.alert {
+  background-color: #FF3E29;
 }

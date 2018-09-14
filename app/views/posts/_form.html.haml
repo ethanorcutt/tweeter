@@ -1,18 +1,13 @@
-.container
-  .col-md-6.ml-auto.mr-auto
-    .card
-      .card-body
-        .container
-          = simple_form_for(@post) do |f|
-            - if @post.errors.any?
-              #error_explanation
-                %h2= "#{pluralize(@post.errors.count, "error")} prohibited this post from being saved:"
-                %ul
-                  - @post.errors.full_messages.each do |message|
-                    %li= message
-            .row
-              = f.input :message, input_html: { maxlength: 140 }, placeholder: 'Whats happening?', html: { class: 'mytextarea' }
-            .row
-              = f.button :button, class: 'btn btn-primary btn-sm mr-sm-1' do
-                Tweet
-              = link_to 'Back', root_path, class: 'btn btn-secondary btn-sm'
+.card
+  .card-body
+    = simple_form_for(@post) do |f|
+      - if @post.errors.any?
+        #error_explanation
+          %h2= "#{pluralize(@post.errors.count, "error")} prohibited this post from being saved:"
+          %ul
+            - @post.errors.full_messages.each do |message|
+              %li= message
+      = f.input :message, input_html: { maxlength: 140 }, placeholder: 'Whats happening?', html: { class: 'mytextarea' }
+
+      = f.button :button, class: 'btn btn-primary btn-sm mr-sm-1' do
+        Tweet

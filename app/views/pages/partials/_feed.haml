@@ -1,0 +1,23 @@
+- @posts.each do |post|
+  .card
+    .card-header
+      = post.user.full_name
+    .card-body
+      %p
+        = post.message
+      .card-link
+        .tweet-text
+          .post-btns
+            %span.likes-count{:id => "post_#{post.id}"}
+              = post.get_upvotes.size
+            |
+            - if user_signed_in?
+              = has_user_liked(post)
+            - else
+              = link_to '', '#', class: 'like-btn far fa-heart'
+            / |
+            / = link_to '', edit_post_path(post), class: 'far fa-edit'
+            |
+            = link_to '', post, method: :delete, data: { confirm: 'Are you sure?' }, class: 'far fa-trash-alt'
+          .post-time.text-muted
+            = formatted_time(post)

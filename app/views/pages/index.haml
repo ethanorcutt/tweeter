@@ -1,6 +1,22 @@
 .container
   .row
-    .col-sm-4.outliner
-      = greeting_helper
-    .col-sm-8.outliner
-      = render '/pages/partials/show_posts'
+    .col-sm-3.padding-md
+      .card
+        .card-header
+          Profile
+        .card-body
+          = greeting_helper
+      .card
+        .card-header
+          Trends for you
+        .card-body
+          Trend 1
+    .col-sm-6.padding-md
+      = render '/posts/form'
+      = render '/pages/partials/feed'
+    .col-sm-3.padding-md
+      .card
+        .card-header
+          Who to follow
+        .card-body
+          Testing 1
